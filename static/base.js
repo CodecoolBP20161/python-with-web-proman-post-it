@@ -1,6 +1,13 @@
 $(document).ready(function() {
+    $("#boards").hide();
+    $("#edit").hide();
+    $("#plus").click(function() {
+        $("#add").replaceWith($("#edit"));
+        $("#edit").fadeIn("slow");
+    });
     $("#save").click(function() {
-        $("#add").replaceWith($("#board"));
+        $("#edit").replaceWith($("#boards"));
+        $("#boards").fadeIn("slow");
+        $("#add").fadeIn("fast");
     });
 });
-
