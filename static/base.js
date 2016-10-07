@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    getBoards();
     $("#edit").hide();
 
     $("#plus").click(function() {
@@ -22,7 +23,7 @@ $(document).ready(function() {
         // make a new board object
         var newBoard = {
             boardId: makeID(),
-            title: title
+            boardTitle: title
         }
         // save board object to local storage
         saveBoard(newBoard);
@@ -31,22 +32,11 @@ $(document).ready(function() {
         var newBoardBox = '<div class="clearfix visible-xs-block"></div>\
         <div class="col-sm-3 boards" id=' + newBoard["boardId"] + '>\
         <div class="panel panel-primary">\
-        <div class="panel-heading">' + newBoard["title"] + '</div>\
+        <div class="panel-heading">' + newBoard["boardTitle"] + '</div>\
         <div class="panel-body"><img src="static/icons/Trello.jpg" class="img-responsive" style="width:100%" alt="Image" id="board"></div>\
         </div>\
         </div>'
         $("#boardRow").prepend(newBoardBox);
-
-        // prepare div
-        // var block = $('<div class="clearfix visible-xs-block"></div>');
-        // var boardDiv = $('<div class="col-sm-3 boards" id=' + newBoard["boardId"] + '></div>');
-        // var panel = $('<div class="panel panel-primary" id=panel' + newBoard["boardId"] + '></div>');
-        // var boardHead = $('<div class="panel-heading"></div>').text(newBoard["title"]);
-        // var boardImage = '<div class="panel-body"><img src="static/icons/Trello.jpg" class="img-responsive" style="width:100%" alt="Image" id="board"></div>';
-        // prepend div of the new board
-        // $("#boardRow").prepend(block);
-        // $("#boardDiv").append(panel);
-        // $("#panel" + newBoard["boardId"]).append(boardHead, boardImage);
     });
 });
 
@@ -70,3 +60,18 @@ var makeID = function() {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;
 }
+
+var getBoards = function() {
+    var x = localStorage.getItem('boards');
+    x = JSON.parse(x);
+    for (var i in x) {
+        var newBoardBox = '<div class="clearfix visible-xs-block"></div>\
+        <div class="col-sm-3 boards" id=' + x[i].boardId + '>\
+        <div class="panel panel-primary">\
+        <div class="panel-heading">' + x[i].boardTitle + '</div>\
+        <div class="panel-body"><img src="static/icons/Trello.jpg" class="img-responsive" style="width:100%" alt="Image" id="board"></div>\
+        </div>\
+        </div>';
+        $("#boardRow").prepend(newBoardBox);
+    }
+};
