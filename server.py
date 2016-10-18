@@ -1,8 +1,8 @@
 from flask import *
-
+from models import *
 
 app = Flask(__name__)
-
+db.connect()
 
 @app.route('/')
 def main():
