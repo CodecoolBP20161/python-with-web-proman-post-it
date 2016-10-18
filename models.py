@@ -4,10 +4,11 @@ from peewee import *
 # !!!ADD LOGIN.TXT TO GITIGNORE!!!
 with open('login.txt', 'r') as f:
     dbname = f.readline().strip()
-db = PostgresqlDatabase(dbname, dbname)
+
+db = PostgresqlDatabase(dbname, user=dbname)
 
 
-class BaseModel:
+class BaseModel(Model):
 
     class Meta:
         database = db

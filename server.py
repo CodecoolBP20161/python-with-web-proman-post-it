@@ -1,8 +1,8 @@
 from flask import *
-# from models import *
+from models import *
 
 app = Flask(__name__)
-# db.connect()
+db.connect()
 
 @app.route('/')
 def main():
@@ -17,6 +17,17 @@ def get_boards():
 @app.route('/save_boards/')
 def save_boards():
     return 'hello'
+
+
+@app.before_request
+def before_req():
+    db.connect()
+
+
+@app.after_request
+def close_db(respond):
+    db.close()
+    return respond
 
 
 if __name__ == '__main__':
