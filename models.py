@@ -8,9 +8,6 @@ with open('login.txt', 'r') as f:
     db_user = login_details[1]
 db = PostgresqlDatabase(db_name, user=db_user)
 
-db = PostgresqlDatabase(dbname, user=dbname)
-
-class BaseModel(Model):
 
 class BaseModel(Model):
 
