@@ -1,12 +1,22 @@
 from flask import *
-from models import *
+# from models import *
 
 app = Flask(__name__)
-db.connect()
+# db.connect()
 
 @app.route('/')
 def main():
     return render_template('home.html')
+
+
+@app.route('/get_boards/')
+def get_boards():
+    return 'hello'
+
+
+@app.route('/save_boards/')
+def save_boards():
+    return 'hello'
 
 
 if __name__ == '__main__':
