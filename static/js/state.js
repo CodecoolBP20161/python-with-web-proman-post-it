@@ -1,5 +1,5 @@
 var Storage = function() {
-  var currentState = new Localstorage(this);
+  var currentState = new Database(this);
 
   this.changeTo = function(state) {
     if (state === 'Database' || state === 'Localstorage') {

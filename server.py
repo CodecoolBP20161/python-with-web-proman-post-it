@@ -15,9 +15,13 @@ def get_boards():
     return 'hello'
 
 
-@app.route('/save_boards/')
-def save_boards():
-    return 'hello'
+@app.route('/save_board/', methods=['POST'])
+def save_board():
+    if not request.json or 'boardTitle' not in request.json:
+        abort(400)
+    new_board = Board(title=request.json['boardTitle'])
+    new_board.save()
+    return jsonify(request.json), 201
 
 
 @app.before_request
