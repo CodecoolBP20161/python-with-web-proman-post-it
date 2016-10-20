@@ -31,19 +31,9 @@ $(document).ready(function() {
       storage.saveBoard(newBoard);
       // clear form value
       document.getElementById("title").value = "";
-      var newBoardBox = '<div class="clearfix visible-xs-block"></div>' +
-      '<div class="col-sm-3 boards" id=' + newBoard.boardId + '>' +
-      '<div class="panel panel-primary">' +
-      '<div class="panel-heading">' + newBoard.boardTitle + '</div>' +
-      '<div class="panel-body"><img src="static/icons/Trello.jpg" class="img-responsive" style="width:100%" alt="Image" id="board"></div>' +
-      '</div>' +
-      '</div>';
-      $("#boardRow").prepend(newBoardBox);
+      showBoard(newBoard.boardId, newBoard.boardTitle);
   });
 });
-
-///////////////////
-///////////////////
 
 var makeID = function() {
     var text = "";
@@ -51,4 +41,15 @@ var makeID = function() {
     for( var i = 0; i < 5; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;
+};
+
+var showBoard = function(id, title) {
+  var newBoardBox = '<div class="clearfix visible-xs-block"></div>' +
+  '<div class="col-sm-3 boards" id=' + id + '>' +
+  '<div class="panel panel-primary">' +
+  '<div class="panel-heading">' + title + '</div>' +
+  '<div class="panel-body"><img src="static/icons/Trello.jpg" class="img-responsive" style="width:100%" alt="Image" id="board"></div>' +
+  '</div>' +
+  '</div>';
+  $("#boardRow").prepend(newBoardBox);
 };
