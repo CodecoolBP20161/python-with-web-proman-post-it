@@ -6,14 +6,17 @@ var getCardsFromDatabase = function(boardID) {
   console.log("getting all cards from database");
 };
 
-var saveBoardToDatabase = function(boardObj) {
+var saveBoardToDatabase = function(title) {
   console.log("saving the board to database");
-  console.log(boardObj);
+  var newBoard;
   $.ajax({
-    type: "POST",
-    data: JSON.stringify(boardObj),
     url: "/save_board/",
-    contentType: "application/json"
+    type: "POST",
+    data: JSON.stringify({title: title}),
+    contentType: "application/json",
+    dataFilter: function (data) {
+      showBoard(JSON.parse(data).boardId, title);
+    }
   });
 };
 
