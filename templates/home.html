@@ -2,85 +2,87 @@
 <html>
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>ProMan</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>ProMan</title>
 
-    <!-- Bootstrap -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="static/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- CSS for Background -->
-    <link href="static/css/background.css" rel="stylesheet">
+  <link href="static/css/background.css" rel="stylesheet">
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-    <script type="text/javascript" src="static/base.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="static/js/bootstrap.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <script type="text/javascript" src="static/base.js"></script>
 
 </head>
 <body>
 
 
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">ProMan</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="nav navbar-nav">
-            <li><a href="#" class="glyphicon glyphicon-home" aria-hidden="true"> Home</a></li>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">ProMan</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="#" class="glyphicon glyphicon-home" aria-hidden="true"> Home</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid bg-3 text-center">
+    <div class="row" id="boardRow">
+      <div class="clearfix visible-xs-block"></div>
+      <div class="col-sm-3" id="add">
+        <div class="panel panel-primary">
+          <div class="panel-heading">CREATE NEW BOARD</div>
+            <center><div class="panel-body"><img src="static/icons/plus2.png" class="img-responsive" style="width:49%" alt="Image" id="plus"></div></center>
         </div>
       </div>
-    </nav>
-
-
-    <div class="container-fluid bg-3 text-center">
-        <div class="row" id="boardRow">
-            <div class="clearfix visible-xs-block"></div>
-            <div class="col-sm-3" id="add">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">CREATE NEW BOARD</div>
-                    <center><div class="panel-body"><img src="static/icons/plus2.png" class="img-responsive" style="width:49%" alt="Image" id="plus"></div>
+      <div class="clearfix visible-xs-block"></div>
+      <div class="col-sm-3" id="edit">
+        <div class="panel panel-primary">
+          <div class="panel-heading">EDIT BOARD</div>
+          <center><div class="panel-body"></div>
+            <form>
+              <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title">
+              </div>
+              <div class="tpbutton btn-toolbar" style="padding-left:5px">
+                <div> <button type="button" class="btn navbar-btn btn-primary" id="save">
+                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save
+                  </button>
                 </div>
-            </div>
-            <div class="clearfix visible-xs-block"></div>
-            <div class="col-sm-3" id="edit">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">EDIT BOARD</div>
-                    <center><div class="panel-body"></div>
-                        <form>
-                            <div class="form-group">
-                              <label for="title">Title:</label>
-                              <input type="text" class="form-control" id="title">
-                            </div>
-                            <div class="tpbutton btn-toolbar" style="padding-left:5px">
-                                <div> <button type="button" class="btn navbar-btn btn-primary" id="save">
-                                  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save
-                              </button>
-                                </div>
-                                <div> <button type="button" class="btn navbar-btn btn-danger pull-right" id="cancel">
-                                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
-                                </button>
-                                </div>
-                            </div>
-                        </form>
+                <div> <button type="button" class="btn navbar-btn btn-danger pull-right" id="cancel">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+                </button>
                 </div>
-            </div>
+              </div>
+            </form>
+          </center>
         </div>
+      </div>
     </div>
+  </div>
 
-    <footer class="navbar-fixed-bottom">
-        <p>Copyright(c) POST-I.T.</p>
-    </footer>
+  <footer class="navbar-fixed-bottom">
+    <p>Copyright(c) POST-I.T.</p>
+  </footer>
 
 
 
