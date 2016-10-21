@@ -22,26 +22,13 @@ $(document).ready(function() {
       }
       $("#edit").hide();
       $("#add").fadeIn("slow");
-      // make a new board object
-      var newBoard = {
-          boardId: makeID(),
-          boardTitle: title
-      };
       // save board object to local storage
-      storage.saveBoard(newBoard);
+      var id = storage.saveBoard(title);
       // clear form value
       document.getElementById("title").value = "";
-      showBoard(newBoard.boardId, newBoard.boardTitle);
   });
 });
 
-var makeID = function() {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for( var i = 0; i < 5; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    return text;
-};
 
 var showBoard = function(id, title) {
   var newBoardBox = '<div class="clearfix visible-xs-block"></div>' +

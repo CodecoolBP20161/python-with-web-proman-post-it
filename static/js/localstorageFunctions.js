@@ -1,5 +1,4 @@
 var getBoardsFromLocalstorage = function() {
-  console.log("getting all boards from localstorage");
   var x = localStorage.getItem('boards');
   x = JSON.parse(x);
   for (var i in x) {
@@ -11,20 +10,29 @@ var getCardsFromLocalstorage = function(boardID) {
   console.log("getting all cards from localstorage");
 };
 
-var saveBoardToLocalstorage = function(boardObj) {
-  // todo:
-  // instead of boardObj, the function should receive the bare title as a string
-  // and generate and ID
-  console.log("saving the board to localstorage");
+var saveBoardToLocalstorage = function(title) {
   var x = localStorage.getItem('boards');
   if (x === null) {
-      x = JSON.stringify([]);
+    x = JSON.stringify([]);
   }
   x = JSON.parse(x);
-  x.push(boardObj);
+  var newBoard = {
+      boardId: makeID(),
+      boardTitle: title
+  };
+  x.push(newBoard);
   localStorage.setItem('boards', JSON.stringify(x));
+  showBoard(newBoard.boardId, title);
 };
 
 var saveCardToLocalstorage = function(boardID, title) {
   console.log("saving the card to localstorage");
+};
+
+var makeID = function() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i = 0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    return text;
 };
