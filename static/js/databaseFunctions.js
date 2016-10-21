@@ -1,13 +1,22 @@
 var getBoardsFromDatabase = function() {
-  console.log("getting all boards from database");
+  $.ajax({
+    url: "/get_boards/",
+    type: "GET",
+    success: function (data) {
+      for (var i = 0; i < data.boards.length; i++) {
+        showBoard(data.boards[i].boardId, data.boards[i].title);
+      }
+    },
+    error: function(error) {console.log(error);}
+  });
 };
 
 var getCardsFromDatabase = function(boardID) {
   console.log("getting all cards from database");
+
 };
 
 var saveBoardToDatabase = function(title) {
-  console.log("saving the board to database");
   var newBoard;
   $.ajax({
     url: "/save_board/",

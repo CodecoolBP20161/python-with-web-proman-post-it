@@ -12,16 +12,20 @@ def main():
 
 @app.route('/get_boards/')
 def get_boards():
-    return 'hello'
+    boards = []
+    for board in Board.select():
+        boards.append({'boardId': board.id, 'title': board.title})
+    all_boards = {'boards': boards}
+    return jsonify(all_boards)
 
 
 @app.route('/save_board/', methods=['POST'])
 def save_board():
     if not request.json or 'title' not in request.json:
         abort(400)
-    new_board = Board(title=request.json['title'])
-    new_board.save()
-    return jsonify({'boardId': new_board.id, 'title': new_board.title}), 201
+    board = Board(title=request.json['title'])
+    board.save()
+    return jsonify({'boardId': board.id, 'title': board.title}), 201
 
 
 @app.before_request

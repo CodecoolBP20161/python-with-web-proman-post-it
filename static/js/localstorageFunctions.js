@@ -1,5 +1,4 @@
 var getBoardsFromLocalstorage = function() {
-  console.log("getting all boards from localstorage");
   var x = localStorage.getItem('boards');
   x = JSON.parse(x);
   for (var i in x) {
@@ -12,7 +11,6 @@ var getCardsFromLocalstorage = function(boardID) {
 };
 
 var saveBoardToLocalstorage = function(title) {
-  console.log("saving the board to localstorage");
   var x = localStorage.getItem('boards');
   if (x === null) {
     x = JSON.stringify([]);
